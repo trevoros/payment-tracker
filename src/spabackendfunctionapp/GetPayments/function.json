@@ -14,9 +14,9 @@
     {
       "type": "cosmosDB",
       "name": "inputDocuments",
-      "databaseName": "cardb",
-      "collectionName": "car",
-      "sqlQuery": "select * from car c where c.state = {state} order by c.name desc",
+      "databaseName": "paymentdb",
+      "collectionName": "payment",
+      "sqlQuery": "select * from payment p",
       "connectionStringSetting": "carreviewstr_COSMOSDB",
       "direction": "in"
     },
