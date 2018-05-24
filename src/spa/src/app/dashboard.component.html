@@ -1,9 +1,9 @@
 <br/>
 <div class="example-button-row">
-        <button mat-raised-button color="accent" (click)="gotoDetail();"><mat-icon class="example-icon">camera_enhance</mat-icon>Add Cars</button>
+        <button mat-raised-button color="accent" (click)="gotoDetail();"><mat-icon class="example-icon">camera_enhance</mat-icon>Add Payment</button>
         </div>
         <mat-tab-group>
-          <mat-tab label="Approved ({{approvedCars.length}})">
+          <mat-tab label="Approved ({{payments.length}})">
             <br/>
             <mat-grid-list cols="3">
               <mat-grid-tile *ngFor="let c of approvedCars">

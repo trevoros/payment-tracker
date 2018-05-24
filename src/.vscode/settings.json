@@ -1,3 +1,5 @@
 {
-    "azureFunctions.projectLanguage": "JavaScript"
+  "azureFunctions.projectRuntime": "~1",
+  "azureFunctions.projectLanguage": "JavaScript",
+  "azureFunctions.templateFilter": "Verified"
 }
