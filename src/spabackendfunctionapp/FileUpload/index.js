@@ -1,4 +1,4 @@
-module.exports = function (context, req) {
+
     function decodeBase64Image(context, data) {
         var matches = data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
         var response = {}
@@ -29,4 +29,3 @@ module.exports = function (context, req) {
             };
         context.done();
     };
-};
