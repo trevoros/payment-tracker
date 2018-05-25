@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { Car } from './car';
+import { Receipt } from './receipt';
 import { Http, Headers, RequestOptions } from '@angular/http';
 declare const Buffer;
 import * as fs from 'fs';
@@ -9,28 +9,26 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './car-detail.component.html'
+  templateUrl: './payment-detail.component.html'
 })
-export class CarDetailComponent {
-  title = 'Car Reviews';
+export class PaymentDetailComponent {
+  title = 'Receipt entry';
   image = 'assets/noimage.jpg';
-  car: Car;
+  receipt: Receipt;
 
  
   constructor(private http:Http, public dialog:MatDialog, private router: Router) {
-      this.car = new Car();
-      this.car.name = "";
-      this.car.company = "";
-      this.car.description = "";
-      this.car.image_url = "assets/noimage.jpg";
-      this.car.state = "pending";
+      this.receipt = new Receipt();
+      this.receipt.name = "";
+      this.receipt.image_url = "assets/noimage.jpg";
+
   }
 
   openDialog(): void {
     let dialogRef = this.dialog.open(ConfirmDialog, {
       width: '400px',
       height: '215px',
-      data: {name: this.car.name}
+      data: {name: this.receipt.name}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -41,9 +39,9 @@ export class CarDetailComponent {
 
   executeUpload(base64encoded: string, filename: string) {
 
-    let headers = new Headers();
+    const headers = new Headers();
     
-    let options = new RequestOptions({
+    const options = new RequestOptions({
       headers: headers
     });
     let data = {filename: filename, data: base64encoded }
@@ -53,7 +51,7 @@ export class CarDetailComponent {
       data => console.log(data),
       error => console.log(error)
     );
-      this.car.image_url = encodeURI(environment.imageBlobUrl + filename);
+      this.receipt.image_url = encodeURI(environment.imageBlobUrl + filename);
       
     this.image = base64encoded;
    console.log("File encoded");
@@ -78,20 +76,20 @@ export class CarDetailComponent {
 
   submit() {
 
-    let headers = new Headers();
+    const headers = new Headers();
     headers.append("Content-Type", "application/json");
     
-    let options = new RequestOptions({
+    const options = new RequestOptions({
       headers: headers
     });
-    let requestObject = {"properties": null, "type": "object"}
-    requestObject.properties = this.car;
-    console.log(JSON.stringify(this.car));
-    let data = this.car;
+    const requestObject = {'properties': null, 'type': 'object'};
+    requestObject.properties = this.receipt;
+    console.log(JSON.stringify(this.receipt));
+    const data = this.receipt;
     this.http.post(environment.createCarUrl, data, options)
     .subscribe(
       data => {
-        console.log(data)
+        console.log(data);
         this.openDialog();
       },
       error => console.log(error)

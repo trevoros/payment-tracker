@@ -9,13 +9,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { CarDetailComponent, ConfirmDialog } from './car-detail.component';
+import { PaymentDetailComponent, ConfirmDialog } from './payment-detail.component';
 import { DashboardComponent } from './dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CarDetailComponent,
+    PaymentDetailComponent,
     DashboardComponent,
     ConfirmDialog
   ],

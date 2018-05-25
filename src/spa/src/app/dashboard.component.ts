@@ -10,15 +10,15 @@ import { environment } from '../environments/environment';
 })
 export class DashboardComponent implements OnInit{
   
-  title = 'Car Reviews';
+  title = 'Payments Tracking';
   state = 'approved';
-  approvedCars = [];
+  payments = [];
   rejectedCars = [];
   pendingCars = [];
 
   constructor(private router: Router, private http: Http) {
     console.log('constructor');
-    this.approvedCars = JSON.parse(localStorage.getItem("approvedCars")) || [];
+    this.payments = JSON.parse(localStorage.getItem("payments")) || [];
     this.rejectedCars = JSON.parse(localStorage.getItem("rejectedCars")) || [];
     this.pendingCars = JSON.parse(localStorage.getItem("pendingCars")) || [];
   }
@@ -30,48 +30,21 @@ export class DashboardComponent implements OnInit{
     let options = new RequestOptions({
       headers: headers
     });
-    let url = environment.getCarsUrl.replace(/\{state\}/, 'approved')
+    let url = environment.getPaymentsUrl.replace(/\{state\}/, 'approved')
     this.http.get(url)
     .subscribe(
       data => {
-        this.approvedCars = data.json();
-        localStorage.setItem('approvedCars', JSON.stringify(data.json()));
+        this.payments = data.json();
+        localStorage.setItem('payments', JSON.stringify(data.json()));
         console.log(data.json());
       },
       error => {
-        this.approvedCars = [];
-        localStorage.setItem('approvedCars', "[]");
+        this.payments = [];
+        localStorage.setItem('payments', "[]");
         console.log(error);
       }
     );
-    url = environment.getCarsUrl.replace(/\{state\}/, 'rejected')
-    this.http.get(url)
-    .subscribe(
-      data => {
-        this.rejectedCars = data.json();
-        localStorage.setItem('rejectedCars', JSON.stringify(data.json()));
-        console.log(data.json());
-      },
-      error => {
-        this.rejectedCars = [];
-        localStorage.setItem('rejectedCars', "[]");
-        console.log(error);
-      }
-    );
-    url = environment.getCarsUrl.replace(/\{state\}/, 'pending')
-    this.http.get(url)
-    .subscribe(
-      data => {
-        this.pendingCars = data.json();
-        localStorage.setItem('pendingCars', JSON.stringify(data.json()));
-        console.log(data.json());
-      },
-      error => {
-        this.pendingCars = [];
-        localStorage.setItem('pendingCars', "[]");
-        console.log(error);
-      }
-    );
+   
   }
 
   gotoDetail(): void {
