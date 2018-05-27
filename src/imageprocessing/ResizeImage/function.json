@@ -1,12 +1,26 @@
 {
-  "disabled": false,
   "bindings": [
     {
-      "name": "myBlob",
+      "path": "receipt/{name}",
       "type": "blobTrigger",
+      "name": "image",
       "direction": "in",
-      "path": "receipts/{filename}",
-      "connection": "AzureWebJobsStorage"
+      "connection": "rsml00storage_STORAGE"
+    },
+    {
+      "path": "receipt-sm/{name}",
+      "type": "blob",
+      "name": "imageSmall",
+      "direction": "out",
+      "connection": "rsml00storage_STORAGE"
+    },
+    {
+      "path": "receipt-md/{name}",
+      "type": "blob",
+      "name": "imageMedium",
+      "direction": "out",
+      "connection": "rsml00storage_STORAGE"
     }
-  ]
+  ],
+  "disabled": false
 }
