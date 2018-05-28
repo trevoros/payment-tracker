@@ -1,0 +1,22 @@
+{
+    "bindings": [
+      {
+        "type": "cosmosDBTrigger",
+        "name": "input",
+        "direction": "in",
+        "leaseCollectionName": "leases",
+        "connectionStringSetting": "carreviewstr_COSMOSDB",
+        "databaseName": "paymentdb",
+        "collectionName": "payment",
+        "createLeaseCollectionIfNotExists": true
+      },
+      {
+        "type": "queue",
+        "name": "outputQueueItem",
+        "queueName": "changefeed",
+        "connection": "rsml00storage_STORAGE",
+        "direction": "out"
+      }
+    ],
+    "disabled": false
+  }

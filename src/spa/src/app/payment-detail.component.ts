@@ -84,7 +84,7 @@ export class PaymentDetailComponent {
     });
     const requestObject = {'properties': null, 'type': 'object'};
     requestObject.properties = this.payment;
-    console.log('*********')
+   
     console.log(JSON.stringify(this.payment));
     const data = this.payment;
     this.http.post(environment.createPaymentUrl, data, options)
