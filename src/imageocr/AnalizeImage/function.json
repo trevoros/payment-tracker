@@ -1,0 +1,28 @@
+{
+    "bindings": [
+      {
+        "type": "queueTrigger",
+        "name": "receiptData",
+        "queueName": "changefeed",
+        "connection": "rsml00storage_STORAGE",
+        "direction": "in"
+      },
+      {
+        "type": "documentDB",
+        "name": "outputDocument",
+        "databaseName": "paymentdb",
+        "collectionName": "payment",
+        "createIfNotExists": false,
+        "connection": "cosmosdb_str",
+        "direction": "out"
+      },
+      {
+        "type": "queue",
+        "name": "poisonedMessage",
+        "queueName": "processreceipt-poison",
+        "connection": "rsml00storage_STORAGE",
+        "direction": "out"
+      }
+    ],
+    "disabled": false
+  }
