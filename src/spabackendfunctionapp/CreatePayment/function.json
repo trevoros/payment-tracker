@@ -15,6 +15,16 @@
       "type": "http",
       "direction": "out",
       "name": "res"
+    },
+    {
+      "type": "cosmosDB",
+      "name": "outputDocument",
+      "databaseName": "paymentdb",
+      "collectionName": "payment",
+      "createIfNotExists": true,
+      "connectionStringSetting": "carreviewstr_COSMOSDB",
+      "direction": "out",
+      "partitionKey": "/name"
     }
   ]
 }
