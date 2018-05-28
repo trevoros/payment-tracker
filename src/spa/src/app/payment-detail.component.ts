@@ -86,7 +86,7 @@ export class PaymentDetailComponent {
     requestObject.properties = this.receipt;
     console.log(JSON.stringify(this.receipt));
     const data = this.receipt;
-    this.http.post(environment.createCarUrl, data, options)
+    this.http.post(environment.createPaymentUrl, data, options)
     .subscribe(
       data => {
         console.log(data);
