@@ -7,8 +7,6 @@ export const environment = {
   production: false,
   fileUploadUrl: "https://rsml00spabackednapi.azurewebsites.net/api/FileUpload/{filename}?code=bUWcAyOAm4ah90anjtbCG4xh8T2MdYlULq9sdZ3e2IUW73H5DsStyg==",
   getPaymentsUrl: "https://rsml00spabackednapi.azurewebsites.net/api/GetPayments/{state}?code=bUWcAyOAm4ah90anjtbCG4xh8T2MdYlULq9sdZ3e2IUW73H5DsStyg==",
-  createPaymentUrl: "https://rsml00spabackednapi.azurewebsites.net/api/GetPayments/{state}?code=bUWcAyOAm4ah90anjtbCG4xh8T2MdYlULq9sdZ3e2IUW73H5DsStyg==",
-  getCarsUrl: "http://localhost:7071/api/GetCars/{state}",
-  createCarUrl: "https://prod-07.japaneast.logic.azure.com:443/workflows/69c3cbe052374fa3bc54a51c6ed00935/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=tkPN9Gciye_QJHfwreCsJmWqGUuEIGHijsWUXDY9Ltk",
-  imageBlobUrl: "https://carreviewstr.blob.core.windows.net/out/",
+  createPaymentUrl: "https://rsml00spabackednapi.azurewebsites.net/api/CreatePayment?code=bUWcAyOAm4ah90anjtbCG4xh8T2MdYlULq9sdZ3e2IUW73H5DsStyg==",
+  imageBlobUrl: "https://rsml00storage.blob.core.windows.net/receipts-sm"
 };

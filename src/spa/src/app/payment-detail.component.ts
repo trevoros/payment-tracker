@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { Receipt } from './receipt';
+import { Payment } from './receipt';
 import { Http, Headers, RequestOptions } from '@angular/http';
 declare const Buffer;
 import * as fs from 'fs';
@@ -14,21 +14,21 @@ import { Router } from '@angular/router';
 export class PaymentDetailComponent {
   title = 'Receipt entry';
   image = 'assets/noimage.jpg';
-  receipt: Receipt;
+  payment: Payment;
 
  
   constructor(private http:Http, public dialog:MatDialog, private router: Router) {
-      this.receipt = new Receipt();
-      this.receipt.name = "";
-      this.receipt.image_url = "assets/noimage.jpg";
-
+      this.payment = new Payment();
+      this.payment.name = '';
+      this.payment.image_url = 'assets/noimage.jpg';
+      this.payment.state = 'pending';
   }
 
   openDialog(): void {
     let dialogRef = this.dialog.open(ConfirmDialog, {
       width: '400px',
       height: '215px',
-      data: {name: this.receipt.name}
+      data: {name: this.payment.name}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -51,7 +51,7 @@ export class PaymentDetailComponent {
       data => console.log(data),
       error => console.log(error)
     );
-      this.receipt.image_url = encodeURI(environment.imageBlobUrl + filename);
+      this.payment.image_url = encodeURI(environment.imageBlobUrl + filename);
       
     this.image = base64encoded;
    console.log("File encoded");
@@ -83,9 +83,10 @@ export class PaymentDetailComponent {
       headers: headers
     });
     const requestObject = {'properties': null, 'type': 'object'};
-    requestObject.properties = this.receipt;
-    console.log(JSON.stringify(this.receipt));
-    const data = this.receipt;
+    requestObject.properties = this.payment;
+    console.log('*********')
+    console.log(JSON.stringify(this.payment));
+    const data = this.payment;
     this.http.post(environment.createPaymentUrl, data, options)
     .subscribe(
       data => {
