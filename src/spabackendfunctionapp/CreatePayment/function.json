@@ -5,11 +5,7 @@
       "authLevel": "function",
       "type": "httpTrigger",
       "direction": "in",
-      "name": "req",
-      "route": "HttpTriggerJS/name/{name}",
-      "methods": [
-        "get"
-      ]
+      "name": "req"
     },
     {
       "type": "http",
