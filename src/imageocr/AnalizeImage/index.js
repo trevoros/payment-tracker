@@ -3,14 +3,14 @@ var request = require('requestretry');
 module.exports = function (context, receiptData) {
 
     if(context.bindingData.dequeueCount > 2) {
-    context.bindings.poisonedMessage = receiptData;
-    context.done();
+        context.bindings.poisonedMessage = receiptData;
+        context.done();
     }
 
-    if (receiptData && (!receiptData.imageApproval ||  receiptData.imageApproval  != "complete")) {
+    if (receiptData && (receiptData.status == 'pending')) {
 
         var options = {
-            uri: process.env["VisionApiUrl"],
+            uri: process.env["VisionApiUrl"] + '/ocr?language=unk&detectOrientation=true',
             method: 'POST',
             qs: {
                 visualFeatures: 'Description'
@@ -26,25 +26,27 @@ module.exports = function (context, receiptData) {
 
         request(options)
         .then(function (parsedBody) {
-            var tags = parsedBody.description.tags;
-            receiptData.imageApproval = "complete";
-            if(tags.indexOf("car") > -1){
-                receiptData.state = "approved";
-                context.bindings.outputDocument = receiptData;
-            } else {
-                receiptData.state = "rejected";
-                context.bindings.outputDocument = receiptData;
-                var rejectionEvent = {
-                    id: receiptData.id,
-                    company: receiptData.company,
-                    description: receiptData.description,
-                    image_url: receiptData.image_url,
-                    name: receiptData.name,
-                    state: receiptData.state,
-                    rejectionReason: "car is not on the image"
-                };
-                context.bindings.rejectedReviewEvent = rejectionEvent;
-            }
+            // var tags = parsedBody.description.tags;
+            // receiptData.imageApproval = "complete";
+            // if(tags.indexOf("car") > -1){
+            //     receiptData.state = "approved";
+            //     context.bindings.outputDocument = receiptData;
+            // } else {
+            //     receiptData.state = "rejected";
+            //     context.bindings.outputDocument = receiptData;
+            //     var rejectionEvent = {
+            //         id: receiptData.id,
+            //         company: receiptData.company,
+            //         description: receiptData.description,
+            //         image_url: receiptData.image_url,
+            //         name: receiptData.name,
+            //         state: receiptData.state,
+            //         rejectionReason: "car is not on the image"
+            //     };
+            //     context.bindings.rejectedReviewEvent = rejectionEvent;
+            // }
+            context.log('********** ----');
+            context.log(parsedBody);
             context.done();
         })
         .catch(function (err) {
