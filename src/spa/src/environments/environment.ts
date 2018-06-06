@@ -8,5 +8,6 @@ export const environment = {
   fileUploadUrl: "https://rsml00spabackednapi.azurewebsites.net/api/FileUpload/{filename}?code=bUWcAyOAm4ah90anjtbCG4xh8T2MdYlULq9sdZ3e2IUW73H5DsStyg==",
   getPaymentsUrl: "https://rsml00spabackednapi.azurewebsites.net/api/GetPayments/{state}?code=bUWcAyOAm4ah90anjtbCG4xh8T2MdYlULq9sdZ3e2IUW73H5DsStyg==",
   createPaymentUrl: "https://rsml00spabackednapi.azurewebsites.net/api/CreatePayment?code=bUWcAyOAm4ah90anjtbCG4xh8T2MdYlULq9sdZ3e2IUW73H5DsStyg==",
-  imageBlobUrl: "https://rsml00storage.blob.core.windows.net/receipts-sm/"
+  imageBlobUrl: "https://rsml00storage.blob.core.windows.net/receipts-md/",
+  storeImagesUrl: "https://rsml00storage.blob.core.windows.net/store-logos/"
 };

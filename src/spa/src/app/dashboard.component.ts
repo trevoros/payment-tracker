@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit{
     this.payments = JSON.parse(localStorage.getItem("payments")) || [];
     this.rejectedCars = JSON.parse(localStorage.getItem("rejectedCars")) || [];
     this.pendingCars = JSON.parse(localStorage.getItem("pendingCars")) || [];
+    this.baseStoreUrl = environment.storeImagesUrl;
   }
   
   ngOnInit(): void {

@@ -8,7 +8,7 @@
                       <mat-card-title>{{payment.name}}</mat-card-title>
                      
                     </mat-card-header>
-                    <img mat-card-image src="{{image}}" alt="Photo of a Shiba Inu">
+                    <img mat-card-image src="{{image}}" style="rotate: -90deg;"  alt="Photo of a Receipt">
                  
                     <mat-card-actions>
                       <button mat-button>LIKE</button>
@@ -28,7 +28,7 @@
              
                         
                         <p>
-                               <input hidden="true" id="upfile" type="file" name="upfile" #fl accept="image/*" (change)="upload(fl.files)"/>
+                               <input hidden="true" style="rotate: -90deg;" id="upfile" type="file" name="upfile" #fl accept="image/*" (change)="upload(fl.files)"/>
                                 <label for="upfile" class="mat-raised-button mat-basic">Choose payment</label>
                 
                         </p>
