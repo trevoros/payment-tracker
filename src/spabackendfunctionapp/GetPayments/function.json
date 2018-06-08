@@ -12,12 +12,10 @@
       "route": "GetPayments/{state}"
     },
     {
-      "type": "cosmosDB",
-      "name": "inputDocuments",
-      "databaseName": "paymentdb",
-      "collectionName": "payment",
-      "sqlQuery": "select * from payment p",
-      "connectionStringSetting": "carreviewstr_COSMOSDB",
+      "name": "tableBinding",
+      "type": "table",
+      "connection": "rsml00storage_STORAGE",
+      "tableName": "Payment",
       "direction": "in"
     },
     {

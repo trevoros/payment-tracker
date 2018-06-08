@@ -1,6 +1,7 @@
 export class Payment {
     name: string;
     image_url: string;
+    image_name: string;
     state: string;
     recipient_name: string;
     recipient_image: string;

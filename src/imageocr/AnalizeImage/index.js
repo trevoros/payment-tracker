@@ -1,6 +1,7 @@
 var request = require('requestretry');
 var getTotal = require('./totalCalculator');
 var entityCreator = require('./entityCreator');
+let azure = require('azure-storage');
 
 module.exports = function (context, receiptData) {
 
@@ -57,13 +58,24 @@ module.exports = function (context, receiptData) {
                 var resultData = Object.assign({}, receiptData, entity);
                 resultData.state = 'complete';
                 context.bindings.outputDocument = resultData;
+
+                let connectionString = process.env.AzureWebJobsStorage;
+                let tableService = azure.createTableService(connectionString);
+                tableService.replaceEntity('Payment', resultData, (error, result, response) => {
+                    let res = {
+                        statusCode: error ? 400 : 204,
+                        body: null
+                    };
+                    context.done(null, res);
+                });
             }
             
-            context.done();
+            // context.done();
         })
         .catch(function (err) {
             context.log(err);
             context.done(err, {});
+            
         });
     }
     // else {

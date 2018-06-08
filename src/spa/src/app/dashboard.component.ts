@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit{
   payments = [];
   rejectedCars = [];
   pendingCars = [];
+  baseStoreUrl = '';
 
   constructor(private router: Router, private http: Http) {
     console.log('constructor');

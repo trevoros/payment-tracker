@@ -13,14 +13,18 @@
       "name": "res"
     },
     {
-      "type": "cosmosDB",
-      "name": "outputDocument",
-      "databaseName": "paymentdb",
-      "collectionName": "payment",
-      "createIfNotExists": true,
-      "connectionStringSetting": "carreviewstr_COSMOSDB",
-      "direction": "out",
-      "partitionKey": "/name"
-    }
+      "tableName": "Payment",
+      "connection": "rsml00storage_STORAGE",
+      "name": "tableBinding",
+      "type": "table",
+      "direction": "out"
+    },
+    {
+        "type": "queue",
+        "name": "outputQueueItem",
+        "queueName": "changefeed",
+        "connection": "rsml00storage_STORAGE",
+        "direction": "out"
+      }
   ]
 }

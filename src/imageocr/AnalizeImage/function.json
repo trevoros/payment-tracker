@@ -8,12 +8,10 @@
         "direction": "in"
       },
       {
-        "type": "documentDB",
-        "name": "outputDocument",
-        "databaseName": "paymentdb",
-        "collectionName": "payment",
-        "createIfNotExists": false,
-        "connection": "cosmosdb_str",
+        "tableName": "Payment",
+        "connection": "rsml00storage_STORAGE",
+        "name": "tableBinding",
+        "type": "table",
         "direction": "out"
       },
       {
