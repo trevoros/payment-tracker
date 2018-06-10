@@ -32,6 +32,11 @@ function createEntity(searchResult, totalPrice) {
                 if (tryFreddo(wordsInTitle[j])) {
                     return 'freddo';
                 }
+
+                if (tryStarbucks(wordsInTitle[j])) {
+                    return 'starbucks';
+                }
+                
                 
                 if (trySushiRunner(wordsInTitle)) {
                     return 'sushirunner';
@@ -89,6 +94,10 @@ function createEntity(searchResult, totalPrice) {
 
     var tryFreddo = function (word) {
         return word.toLowerCase().indexOf('freddo') >= 0;
+    }
+
+    var tryStarbucks = function (word) {
+        return word.toLowerCase().indexOf('starbuck') >= 0;
     }
 
     var tryPasion= function (word) {
