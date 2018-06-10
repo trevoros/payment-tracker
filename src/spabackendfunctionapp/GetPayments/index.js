@@ -3,7 +3,6 @@ module.exports = function (context, req) {
 
     context.log(`Http trigger state passed in: ${context.bindingData.state}`);
     console.log(context.bindings.tableBinding.length);
-    console.log('fffff');
     if (context.bindings.tableBinding && context.bindings.tableBinding.length > 0) {
         context.res = {
             body: context.bindings.tableBinding

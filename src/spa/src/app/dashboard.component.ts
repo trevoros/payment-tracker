@@ -8,45 +8,48 @@ import { environment } from '../environments/environment';
   selector: 'app-root',
   templateUrl: './dashboard.component.html'
 })
-export class DashboardComponent implements OnInit{
-  
+export class DashboardComponent implements OnInit {
+
   title = 'Payments Tracking';
   state = 'approved';
   payments = [];
-  rejectedCars = [];
-  pendingCars = [];
+  pendingPayments = [];
+
   baseStoreUrl = '';
 
   constructor(private router: Router, private http: Http) {
     console.log('constructor');
-    this.payments = JSON.parse(localStorage.getItem("payments")) || [];
-    this.rejectedCars = JSON.parse(localStorage.getItem("rejectedCars")) || [];
-    this.pendingCars = JSON.parse(localStorage.getItem("pendingCars")) || [];
+    this.payments = JSON.parse(localStorage.getItem('payments')) || [];
+    this.pendingPayments = JSON.parse(localStorage.getItem('pendingPayments')) || [];
     this.baseStoreUrl = environment.storeImagesUrl;
   }
-  
+
   ngOnInit(): void {
 
-    let headers = new Headers();
-    
-    let options = new RequestOptions({
+    const headers = new Headers();
+
+    const options = new RequestOptions({
       headers: headers
     });
-    let url = environment.getPaymentsUrl.replace(/\{state\}/, 'approved')
+    const url = environment.getPaymentsUrl.replace(/\{state\}/, 'complete');
     this.http.get(url)
     .subscribe(
       data => {
-        this.payments = data.json();
+        const allPayments = data.json();
+        this.payments = allPayments.filter(p => p.state === 'complete');
+        this.pendingPayments = allPayments.filter(p => p.state === 'pending');
         localStorage.setItem('payments', JSON.stringify(data.json()));
+        localStorage.setItem('pendingPayments', JSON.stringify(data.json()));
         console.log(data.json());
       },
       error => {
         this.payments = [];
+        this.pendingPayments = [];
         localStorage.setItem('payments', "[]");
+        localStorage.setItem('pendingPayments', "[]");
         console.log(error);
       }
     );
-   
   }
 
   gotoDetail(): void {

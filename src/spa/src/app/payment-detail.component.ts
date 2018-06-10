@@ -5,6 +5,8 @@ declare const Buffer;
 import * as fs from "fs";
 import { environment } from "../environments/environment";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+
+
 import { Router } from "@angular/router";
 const shortId = require("shortid");
 
@@ -16,6 +18,7 @@ export class PaymentDetailComponent {
   title = "Receipt entry";
   image = "assets/noimage.jpg";
   payment: Payment;
+  processing = false;
 
   constructor(private http: Http, public dialog: MatDialog, private router: Router) {
     this.payment = new Payment();
@@ -78,6 +81,7 @@ export class PaymentDetailComponent {
   }
 
   submit() {
+    this.processing = true;
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
 
@@ -93,6 +97,7 @@ export class PaymentDetailComponent {
       data => {
         console.log(data);
         this.openDialog();
+        this.processing = false;
       },
       error => console.log(error)
     );

@@ -27,6 +27,25 @@
           </mat-grid-list>
 
           </mat-tab>
+
+          <mat-tab label="Pending ({{pendingPayments.length}})">
+              <br/>
+              <mat-grid-list cols="3">
+                <mat-grid-tile *ngFor="let p of pendingPayments">
+                  <mat-card class="example-card">
+                    <mat-card-header>                  
+                      <mat-card-title>{{p.name}}</mat-card-title>
+                    </mat-card-header>
+                  
+                    <mat-card-content>
+                      <h4>Pending</h4>
+                    </mat-card-content>
+                  
+                  </mat-card>
+                </mat-grid-tile>
+            </mat-grid-list>
+  
+            </mat-tab>
         
         
           

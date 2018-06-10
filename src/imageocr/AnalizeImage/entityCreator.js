@@ -1,17 +1,18 @@
 function createEntity(searchResult, totalPrice) {
     
     var getLast4 = function () {
+        let last4 = '';
         if (searchResult.cardLast4) {
-            return searchResult.cardLast4.replace(/i/g, 1).replace(/b/, 5);
+            last4 = searchResult.cardLast4.replace(/i/g, 1).replace(/b/, 5);
         }
 
-        return 'XXXX';
+        return !isNaN(last4) &&  last4 || 'XXXX';
     }
 
     var getStoreName = function() {
         var wordsInTitle = searchResult.wordsInTitle.words;
         if (wordsInTitle && wordsInTitle.length) {
-            for (var j in wordsInTitle) {
+            for (let j in wordsInTitle) {
                 if (tryPublix(wordsInTitle[j])) {
                     return 'publix';
                 }
@@ -26,6 +27,18 @@ function createEntity(searchResult, totalPrice) {
 
                 if (tryMcDonald(wordsInTitle[j])) {
                     return 'mcdonalds';
+                }
+
+                if (tryFreddo(wordsInTitle[j])) {
+                    return 'freddo';
+                }
+                
+                if (trySushiRunner(wordsInTitle)) {
+                    return 'sushirunner';
+                }
+
+                if (tryPasion(wordsInTitle[j])) {
+                    return 'pasiondelcielo';
                 }
 
                 if (wordsInTitle[j].toLowerCase() == 'papa') {
@@ -74,8 +87,16 @@ function createEntity(searchResult, totalPrice) {
         return word.toLowerCase().indexOf('mcdonal') >= 0;
     }
 
+    var tryFreddo = function (word) {
+        return word.toLowerCase().indexOf('freddo') >= 0;
+    }
+
+    var tryPasion= function (word) {
+        return word.toLowerCase().indexOf('pasion') >= 0;
+    }
+
     var trySushiRunner = function (wordsInTitle) {
-        return wordsInTitle.find(w => w.toLowerCase() == 'publix' || w.toLowerCase() == 'pyblix');
+        return wordsInTitle.find(w => w.toLowerCase() == 'sushi');
     }
 
     return {

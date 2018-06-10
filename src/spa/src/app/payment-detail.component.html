@@ -2,41 +2,34 @@
 <br/>
 <mat-grid-list cols="2" rowHeight="1:1">
     <mat-grid-tile>
-            <mat-card class="example-card">
+            <mat-card class="example-card" style="width:600px;">
                     <mat-card-header>
-                      <div mat-card-avatar class="example-header-image"></div>
+                      <div  class="example-header-image"></div>
                       <mat-card-title>{{payment.name}}</mat-card-title>
                      
                     </mat-card-header>
                     <img mat-card-image src="{{image}}" style="rotate: -90deg;"  alt="Photo of a Receipt">
-                 
-                    <mat-card-actions>
-                      <button mat-button>LIKE</button>
-                      <button mat-button>SHARE</button>
-                      <button mat-button>Edit</button>
-                    </mat-card-actions>
+       
                   </mat-card>
     </mat-grid-tile>
     <mat-grid-tile>
         <mat-card>
-                <form class="example-form">
+                    <form class="example-form">
                         <mat-form-field class="example-full-width">
                                 <input matInput placeholder="Name" name="name" [(ngModel)]="payment.name">
                         </mat-form-field>
 
-                        
-             
-                        
+
                         <p>
                                <input hidden="true" style="rotate: -90deg;" id="upfile" type="file" name="upfile" #fl accept="image/*" (change)="upload(fl.files)"/>
-                                <label for="upfile" class="mat-raised-button mat-basic">Choose payment</label>
-                
+                                <label for="upfile" class="mat-raised-button mat-basic">Pick Receipt</label>
                         </p>
                       </form>
                       
                       <form>
                         <p>
-                            <button mat-fab color="accent"><mat-icon class="example-icon" (click)="submit()">file_upload</mat-icon></button>
+                           
+                            <button mat-fab disabled="{{ processing && 'disabled'}}" color="accent"><mat-icon class="example-icon" (click)="submit()">file_upload</mat-icon></button>
                         </p>
                       </form>
                       

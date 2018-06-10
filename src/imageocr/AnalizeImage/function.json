@@ -1,26 +1,26 @@
 {
-    "bindings": [
-      {
-        "type": "queueTrigger",
-        "name": "receiptData",
-        "queueName": "changefeed",
-        "connection": "rsml00storage_STORAGE",
-        "direction": "in"
-      },
-      {
-        "tableName": "Payment",
-        "connection": "rsml00storage_STORAGE",
-        "name": "tableBinding",
-        "type": "table",
-        "direction": "out"
-      },
-      {
-        "type": "queue",
-        "name": "poisonedMessage",
-        "queueName": "processreceipt-poison",
-        "connection": "rsml00storage_STORAGE",
-        "direction": "out"
-      }
-    ],
-    "disabled": false
-  }
+  "bindings": [
+    {
+      "type": "queueTrigger",
+      "name": "receiptData",
+      "queueName": "changefeed",
+      "connection": "rsml00storage_STORAGE",
+      "direction": "in"
+    },
+    {
+      "tableName": "Payment",
+      "connection": "rsml00storage_STORAGE",
+      "name": "tableBinding",
+      "type": "table",
+      "direction": "out"
+    },
+    {
+      "type": "queue",
+      "name": "poisonedMessage",
+      "queueName": "processreceipt-poison",
+      "connection": "rsml00storage_STORAGE",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
