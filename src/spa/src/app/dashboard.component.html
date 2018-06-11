@@ -3,7 +3,7 @@
         <button mat-raised-button color="accent" (click)="gotoDetail();"><mat-icon class="example-icon">camera_enhance</mat-icon>Add Payment</button>
         </div>
         <mat-tab-group>
-          <mat-tab label="Payments ({{payments.length}})">
+          <mat-tab label="Payments ({{ payments && payments.length || 0}})">
             <br/>
             <mat-grid-list cols="3">
               <mat-grid-tile *ngFor="let p of payments">
@@ -28,7 +28,7 @@
 
           </mat-tab>
 
-          <mat-tab label="Pending ({{pendingPayments.length}})">
+          <mat-tab label="Pending ({{pendingPayments && pendingPayments.length || 0}})">
               <br/>
               <mat-grid-list cols="3">
                 <mat-grid-tile *ngFor="let p of pendingPayments">

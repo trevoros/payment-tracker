@@ -5,8 +5,8 @@ import { DashboardComponent } from './dashboard.component';
 import { PaymentDetailComponent } from './payment-detail.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-    { path: 'dashboard', component: DashboardComponent },
+    { path: '', redirectTo: '/payments', pathMatch: 'full' },
+    { path: 'payments', component: DashboardComponent },
     { path: 'detail', component: PaymentDetailComponent }
 ];
 

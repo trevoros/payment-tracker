@@ -36,7 +36,7 @@ export class PaymentDetailComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log("The dialog was closed");
-      this.router.navigate(["/dashboard"]);
+      this.router.navigate(["/payments"]);
     });
   }
 
@@ -59,7 +59,7 @@ export class PaymentDetailComponent {
   }
 
   upload(list: any) {
-    if (list.length <= 0) {
+    if (!list || list.length <= 0) {
       return;
     }
 

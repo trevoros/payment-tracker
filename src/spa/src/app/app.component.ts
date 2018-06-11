@@ -12,7 +12,7 @@ export class AppComponent {
   constructor(private router: Router){}
 
   home() {
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/payments']);
   }
 }
 
